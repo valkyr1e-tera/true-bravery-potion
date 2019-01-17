@@ -1,0 +1,14 @@
+{
+	"files": {
+		"index.js": "dcc7d86f4f44f74a46503db96de97ab6a46e0bc9d7deaaf3d456d0fe127d2af3",
+		"module.json": "63a604e28d5d6a7b497729cd3028b87c136f3506c31932319c967d7107e1c428",
+		"settings_migrator.js": "3dc53d47d4369d55d6be381a66783e709825cc6a443f12053a8a7568225b6530"
+	},
+	"defs": {
+		"C_USE_ITEM": 3,
+		"S_ABNORMALITY_BEGIN": 3,
+		"S_ABNORMALITY_END": 1,
+		"S_ABNORMALITY_REFRESH": 1,
+		"S_INVEN": 16
+	}
+}
