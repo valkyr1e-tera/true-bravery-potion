@@ -27,7 +27,7 @@ module.exports = function TrueBravelyPotion(mod) {
   }
 
   let items = []
-  mod.hook('S_INVEN', 16, { order: -1000 }, event => {
+  mod.hook('S_INVEN', 16, event => {
     items = event.first ? event.items : items.concat(event.items)
   })
 
@@ -46,10 +46,8 @@ module.exports = function TrueBravelyPotion(mod) {
         id = itemId
     }
 
-    if (!id)
-      return
-
-    mod.send('C_USE_ITEM', 3, { gameId: mod.game.me.gameId, id })
+    if (id)
+      mod.send('C_USE_ITEM', 3, { gameId: mod.game.me.gameId, id })
   }
 
   let interval
