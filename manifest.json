@@ -1,6 +1,6 @@
 {
 	"files": {
-		"index.js": "d9a6271c50a743568f0a2d7dd5ae516442d4af8818a519f9b02f6d653e2f9d73",
+		"index.js": "bbefe70c2358f955b6506ea6e190d0165718a34e5b19e20b8709296af13a6c01",
 		"module.json": "63a604e28d5d6a7b497729cd3028b87c136f3506c31932319c967d7107e1c428",
 		"settings_migrator.js": "3dc53d47d4369d55d6be381a66783e709825cc6a443f12053a8a7568225b6530"
 	},
@@ -9,6 +9,6 @@
 		"S_ABNORMALITY_BEGIN": 3,
 		"S_ABNORMALITY_END": 1,
 		"S_ABNORMALITY_REFRESH": 1,
-		"S_INVEN": 16
+		"S_INVEN": 17
 	}
 }

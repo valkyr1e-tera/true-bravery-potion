@@ -27,7 +27,7 @@ module.exports = function TrueBravelyPotion(mod) {
   }
 
   let items = []
-  mod.hook('S_INVEN', 16, event => {
+  mod.hook('S_INVEN', 17, event => {
     items = event.first ? event.items : items.concat(event.items)
   })
 
