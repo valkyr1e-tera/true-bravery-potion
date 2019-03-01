@@ -1,4 +1,6 @@
 module.exports = function TrueBravelyPotion(mod) {
+  mod.game.initialize('inventory')
+
   mod.command.add('tbp', () => {
     mod.settings.enabled = !mod.settings.enabled
     mod.command.message(mod.settings.enabled ? 'enabled' : 'disabled')
@@ -26,28 +28,22 @@ module.exports = function TrueBravelyPotion(mod) {
     return abnormalities[id] - Date.now()
   }
 
-  let items = []
-  mod.hook('S_INVEN', 17, event => {
-    items = event.first ? event.items : items.concat(event.items)
-  })
-
   function useBravery() {
     if (!mod.settings.enabled || !mod.game.isIngame || mod.game.isInLoadingScreen || !mod.game.me.alive || mod.game.me.mounted || mod.game.me.inBattleground || !mod.game.me.inCombat)
       return
 
     for (const buff of [4830, 4831, 4833]) {
-      if (abnormalityDuration(buff) > 60 * 1000)
+      if (abnormalityDuration(buff) > 0)
         return
     }
 
-    let id
-    for (const itemId of [444, 81179, 202015, 100260, 117529, 117533, 139536, 117530, 117534]) {
-      if (items.find(item => item.id === itemId))
-        id = itemId
-    }
+    const bravely = mod.game.inventory.findInBag([444, 81179, 202015, 100260, 117529, 117533, 139536, 117530, 117534])
 
-    if (id)
-      mod.send('C_USE_ITEM', 3, { gameId: mod.game.me.gameId, id })
+    if (bravely)
+      mod.send('C_USE_ITEM', 3, {
+        gameId: mod.game.me.gameId,
+        id: bravely.id
+      })
   }
 
   let interval
@@ -64,6 +60,7 @@ module.exports = function TrueBravelyPotion(mod) {
   }
 
   mod.game.on('enter_game', start)
+
   mod.game.on('leave_game', () => {
     abnormalities = {}
     stop()
